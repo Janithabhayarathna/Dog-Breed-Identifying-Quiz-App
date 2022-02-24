@@ -1,5 +1,6 @@
 package com.example.dog_breed_quiz
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +13,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     val gen = Random()
-    var corrctCount = 0
+    var correctCount = 0
     var totalCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +30,8 @@ class MainActivity : AppCompatActivity() {
         val imgBtn3 = findViewById<ImageButton>(R.id.imageButton3)
 
         //Getting the buttons
-        val nextBtn = findViewById<Button>(R.id.nextBtn)
-        val finishBtn = findViewById<Button>(R.id.finishBtn)
+        val finishBtn = findViewById<Button>(R.id.finishbtn)
+        val nextBtn = findViewById<Button>(R.id.nxtBtn)
 
         //Creating new objects for the class Breed
         val carin = Breed("Carin")
@@ -61,9 +62,16 @@ class MainActivity : AppCompatActivity() {
             setImage(imgBtn1, imgBtn2, imgBtn3, breeds, question, answer)
         }
         finishBtn.setOnClickListener {
-
+            finishing()
         }
 
+    }
+
+    fun finishing(){
+        val scorer = Intent(this, Score_Viewer::class.java)
+        scorer.putExtra("correct", correctCount.toString())
+        scorer.putExtra("total", totalCount.toString())
+        startActivity(scorer)
     }
 
     fun setImage(imgBtn1: ImageButton, imgBtn2: ImageButton, imgBtn3: ImageButton, breeds: List<Breed>, question: TextView, answer: TextView) {
@@ -72,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
         if(breeds[0].images.size != 0) {
             //Initializing the textViews
-            question.text = " "
+//            question.text = " "
             answer.text = " "
 
             //Generating a random number
@@ -108,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                 if (img1.name == breeds[index].name) {
                     answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
-                    corrctCount ++
+                    correctCount ++
                 } else {
                     answer.text = "Inorrect"
                     answer.setTextColor(Color.parseColor("red"));
@@ -118,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 if (img2.name == breeds[index].name) {
                     answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
-                    corrctCount ++
+                    correctCount ++
                 } else {
                     answer.text = "Inorrect"
                     answer.setTextColor(Color.parseColor("red"));
@@ -128,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                 if (img3.name == breeds[index].name) {
                     answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
-                    corrctCount ++
+                    correctCount ++
                 } else {
                     answer.text = "Inorrect"
                     answer.setTextColor(Color.parseColor("red"));
@@ -141,8 +149,8 @@ class MainActivity : AppCompatActivity() {
             img3.images.removeAt(0)
 
         } else {
-            Toast.makeText(applicationContext, "Number of questions are finished", Toast.LENGTH_LONG)
-            Toast.makeText(applicationContext, "Click finish button to end", Toast.LENGTH_SHORT)
+            Toast.makeText(applicationContext, "Number of questions are finished...", Toast.LENGTH_LONG).show()
+            finishing()
         }
     }
 }
