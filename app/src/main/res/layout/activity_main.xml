@@ -16,9 +16,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="123dp" />
+
+        <TextView
             android:id="@+id/ques"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="54dp"
             android:text="@string/question" />
 
         <LinearLayout

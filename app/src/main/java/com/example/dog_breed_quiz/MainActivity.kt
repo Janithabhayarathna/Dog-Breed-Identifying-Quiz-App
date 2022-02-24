@@ -76,11 +76,12 @@ class MainActivity : AppCompatActivity() {
 
     fun setImage(imgBtn1: ImageButton, imgBtn2: ImageButton, imgBtn3: ImageButton, breeds: List<Breed>, question: TextView, answer: TextView) {
 
-        totalCount++
-
         if(breeds[0].images.size != 0) {
+
+            totalCount++
+
             //Initializing the textViews
-//            question.text = " "
+            question.text = " "
             answer.text = " "
 
             //Generating a random number
@@ -108,37 +109,37 @@ class MainActivity : AppCompatActivity() {
             imgBtn3.setImageResource(id3)
 
             //Setting the question
-            question.text = "Select " + breeds[index].name
+            question.text = "       Select " + breeds[index].name
 
             //Setting the action listeners
 
             imgBtn1.setOnClickListener() {
                 if (img1.name == breeds[index].name) {
-                    answer.text = "Correct"
+                    answer.text = "     Correct"
                     answer.setTextColor(Color.parseColor("green"));
                     correctCount ++
                 } else {
-                    answer.text = "Inorrect"
+                    answer.text = "     Inorrect"
                     answer.setTextColor(Color.parseColor("red"));
                 }
             }
             imgBtn2.setOnClickListener() {
                 if (img2.name == breeds[index].name) {
-                    answer.text = "Correct"
+                    answer.text = "     Correct"
                     answer.setTextColor(Color.parseColor("green"));
                     correctCount ++
                 } else {
-                    answer.text = "Inorrect"
+                    answer.text = "     Inorrect"
                     answer.setTextColor(Color.parseColor("red"));
                 }
             }
             imgBtn3.setOnClickListener() {
                 if (img3.name == breeds[index].name) {
-                    answer.text = "Correct"
+                    answer.text = "     Correct"
                     answer.setTextColor(Color.parseColor("green"));
                     correctCount ++
                 } else {
-                    answer.text = "Inorrect"
+                    answer.text = "     Inorrect"
                     answer.setTextColor(Color.parseColor("red"));
                 }
             }
