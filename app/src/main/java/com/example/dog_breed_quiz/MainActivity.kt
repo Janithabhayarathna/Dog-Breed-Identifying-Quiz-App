@@ -12,7 +12,6 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    val gen = Random()
     var correctCount = 0
     var totalCount = 0
 
@@ -84,9 +83,6 @@ class MainActivity : AppCompatActivity() {
             question.text = " "
             answer.text = " "
 
-            //Generating a random number
-            val index = gen.nextInt(breeds.size)
-
             //Shuffling the breeds list for the randomizing purpose
             Collections.shuffle(breeds)
 
@@ -108,38 +104,42 @@ class MainActivity : AppCompatActivity() {
             imgBtn2.setImageResource(id2)
             imgBtn3.setImageResource(id3)
 
+            //Generating a random number
+            val gen = Random()
+            val index = gen.nextInt(3)
+
             //Setting the question
-            question.text = "       Select " + breeds[index].name
+            question.text = "Select " + breeds[index].name
 
             //Setting the action listeners
 
             imgBtn1.setOnClickListener() {
                 if (img1.name == breeds[index].name) {
-                    answer.text = "     Correct"
+                    answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
                     correctCount ++
                 } else {
-                    answer.text = "     Inorrect"
+                    answer.text = "Incorrect"
                     answer.setTextColor(Color.parseColor("red"));
                 }
             }
             imgBtn2.setOnClickListener() {
                 if (img2.name == breeds[index].name) {
-                    answer.text = "     Correct"
+                    answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
                     correctCount ++
                 } else {
-                    answer.text = "     Inorrect"
+                    answer.text = "Incorrect"
                     answer.setTextColor(Color.parseColor("red"));
                 }
             }
             imgBtn3.setOnClickListener() {
                 if (img3.name == breeds[index].name) {
-                    answer.text = "     Correct"
+                    answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
                     correctCount ++
                 } else {
-                    answer.text = "     Inorrect"
+                    answer.text = "Incorrect"
                     answer.setTextColor(Color.parseColor("red"));
                 }
             }
