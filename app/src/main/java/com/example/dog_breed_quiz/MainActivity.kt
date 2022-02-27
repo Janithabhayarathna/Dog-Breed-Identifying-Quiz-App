@@ -77,6 +77,10 @@ class MainActivity : AppCompatActivity() {
 
         if(breeds[0].images.size != 0) {
 
+            imgBtn1.isEnabled = true
+            imgBtn2.isEnabled = true
+            imgBtn3.isEnabled = true
+
             totalCount++
 
             //Initializing the textViews
@@ -114,16 +118,20 @@ class MainActivity : AppCompatActivity() {
             //Setting the action listeners
 
             imgBtn1.setOnClickListener() {
+                imgBtn2.isEnabled = false
+                imgBtn3.isEnabled = false
                 if (img1.name == breeds[index].name) {
                     answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
-                    correctCount ++
+                    correctCount++
                 } else {
                     answer.text = "Incorrect"
                     answer.setTextColor(Color.parseColor("red"));
                 }
             }
             imgBtn2.setOnClickListener() {
+                imgBtn1.isEnabled = false
+                imgBtn3.isEnabled = false
                 if (img2.name == breeds[index].name) {
                     answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
@@ -134,6 +142,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             imgBtn3.setOnClickListener() {
+                imgBtn1.isEnabled = false
+                imgBtn2.isEnabled = false
                 if (img3.name == breeds[index].name) {
                     answer.text = "Correct"
                     answer.setTextColor(Color.parseColor("green"));
